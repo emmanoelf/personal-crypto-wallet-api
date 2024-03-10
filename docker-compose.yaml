@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    restart: always
+    volumes:
+      - .m2:/root/.m2
+    tty: true
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - app-wallet-network
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    environment:
+      - MYSQL_DATABASE=wallet
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    networks:
+      - app-wallet-network
+
+networks:
+  app-wallet-network:
+    driver: bridge
