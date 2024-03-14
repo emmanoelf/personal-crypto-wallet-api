@@ -1,4 +1,4 @@
-package com.personalcryptowallet.domain.model;
+package com.personalcryptowallet.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
