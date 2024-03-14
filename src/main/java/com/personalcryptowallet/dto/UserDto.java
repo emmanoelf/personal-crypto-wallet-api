@@ -1,11 +1,8 @@
 package com.personalcryptowallet.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public record UserDto(
-        @NotNull String email,
-        @NotNull String password) {}
+        @NotNull @NotBlank String email,
+        @NotNull @NotBlank String password) {}
