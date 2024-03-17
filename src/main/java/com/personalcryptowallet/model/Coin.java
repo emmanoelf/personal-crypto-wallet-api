@@ -25,10 +25,10 @@ public class Coin {
     private String name;
 
     @Column(nullable = false)
-    private String tokenAcronym;
+    private String slug;
 
     @Column(nullable = false)
-    private BigDecimal value;
+    private BigDecimal price;
 
     @Column(nullable = false)
     private BigDecimal quantity;
