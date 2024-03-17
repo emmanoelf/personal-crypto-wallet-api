@@ -25,10 +25,6 @@ public class Wallet {
     @Column(nullable = false)
     private String name;
 
-    @JoinColumn(name = "user_id", nullable = false)
-    @ManyToOne
-    private User user;
-
     @Column(nullable = false)
     private BigDecimal balance;
 
@@ -36,12 +32,25 @@ public class Wallet {
     private BigDecimal totalContribuition;
 
     @Column(nullable = false)
-    private BigDecimal profit;
+    private BigDecimal profitAndLose;
 
     @ManyToMany
     @JoinTable(name = "wallet_coin",
             joinColumns = @JoinColumn(name = "wallet_id"),
             inverseJoinColumns = @JoinColumn(name = "coin_id"))
     private Set<Coin> coins = new HashSet<>();
+
+    @PrePersist
+    private void defaultZero(){
+        if(this.balance == null){
+            this.balance = BigDecimal.ZERO;
+        }
+        if(this.totalContribuition == null){
+            this.totalContribuition = BigDecimal.ZERO;
+        }
+        if(this.profitAndLose == null){
+            this.profitAndLose = BigDecimal.ZERO;
+        }
+    }
 
 }
