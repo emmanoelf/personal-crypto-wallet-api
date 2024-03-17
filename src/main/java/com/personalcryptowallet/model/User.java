@@ -27,7 +27,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "user_id", nullable = false)
     private List<Wallet> wallets = new ArrayList<>();
 
