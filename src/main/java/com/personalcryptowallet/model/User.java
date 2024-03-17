@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,5 +26,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id", nullable = false)
+    private List<Wallet> wallets = new ArrayList<>();
 
 }
