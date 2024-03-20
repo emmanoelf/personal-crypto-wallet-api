@@ -37,15 +37,15 @@ public class Wallet {
     @Column(nullable = false)
     private BigDecimal profitAndLose;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @ManyToMany
     @JoinTable(name = "wallet_coin",
             joinColumns = @JoinColumn(name = "wallet_id"),
             inverseJoinColumns = @JoinColumn(name = "coin_id"))
     private Set<Coin> coins = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     @PrePersist
     private void defaultZero(){

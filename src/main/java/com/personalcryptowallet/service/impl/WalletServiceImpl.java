@@ -9,10 +9,10 @@ import com.personalcryptowallet.model.Wallet;
 import com.personalcryptowallet.repository.UserRepository;
 import com.personalcryptowallet.repository.WalletRepository;
 import com.personalcryptowallet.service.WalletService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,22 +23,18 @@ public class WalletServiceImpl implements WalletService {
     private final UserRepository userRepository;
     private final WalletRepository walletRepository;
 
+    @Transactional
     @Override
     public WalletResponseDto save(UUID userId, WalletDto walletDto) {
         User user = this.userRepository.findById(userId)
                 .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado"));
 
-        List<Wallet> wallets = this.walletRepository.findAllByUserId(userId);
+        Wallet wallet = WalletMapper.toModel(walletDto);
+        wallet.setUser(user);
 
-        Wallet newWallet = WalletMapper.toModel(walletDto);
+        wallet = walletRepository.save(wallet);
 
-        wallets.add(newWallet);
-        newWallet.setUser(user);
-        user.setWallets(wallets);
-
-        this.userRepository.save(user);
-
-        return WalletMapper.toDto(newWallet);
+        return WalletMapper.toDto(wallet);
     }
 
     @Override
@@ -47,7 +43,7 @@ public class WalletServiceImpl implements WalletService {
                 .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado"));
         Optional<Wallet> wallet = this.walletRepository.findByName(nameWallet);
 
-        if(wallet.isEmpty()){
+        if (wallet.isEmpty()) {
             throw new EntidadeNaoEncontradaException("Carteira não encontrada");
         }
 

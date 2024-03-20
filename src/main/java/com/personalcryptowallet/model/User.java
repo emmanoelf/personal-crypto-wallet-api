@@ -30,7 +30,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private List<Wallet> wallets = new ArrayList<>();
 
 }
