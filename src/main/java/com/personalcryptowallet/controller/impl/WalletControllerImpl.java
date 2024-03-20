@@ -26,4 +26,10 @@ public class WalletControllerImpl implements WalletController {
     public ResponseEntity<WalletResponseDto> save(@PathVariable @Valid UUID userId, @Valid @RequestBody WalletDto walletDto) {
         return ResponseEntity.status(HttpStatus.OK).body(this.walletService.save(userId, walletDto));
     }
+
+    @Override
+    @GetMapping(value = "/{userId}")
+    public ResponseEntity<WalletResponseDto> show(@PathVariable @Valid UUID userId, @RequestParam(value = "name") String name){
+        return ResponseEntity.ok(this.walletService.find(userId, name));
+    }
 }

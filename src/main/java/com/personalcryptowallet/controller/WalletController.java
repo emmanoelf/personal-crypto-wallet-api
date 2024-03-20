@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface WalletController {
     ResponseEntity<WalletResponseDto> save(UUID userId, WalletDto walletDto);
+    ResponseEntity<WalletResponseDto> show(UUID userId, String name);
 }
