@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface WalletService {
     WalletResponseDto save(UUID userId, WalletDto walletDto);
-    WalletResponseDto find(UUID userId, UUID walletId);
+    WalletResponseDto find(UUID userId, String nameWallet);
     WalletResponseDto delete(UUID userId, UUID walletId);
-    WalletResponseDto rename(UUID userId, UUID walletId);
+    WalletResponseDto rename(UUID userId, UUID walletId, String nameWallet);
 }
