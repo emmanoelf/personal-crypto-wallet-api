@@ -41,4 +41,12 @@ public class WalletControllerImpl implements WalletController {
         this.walletService.delete(userId, walletId);
         return ResponseEntity.noContent().build();
     }
+
+    @Override
+    @PutMapping("/{userId}/{walletId}")
+    public ResponseEntity<WalletResponseDto> rename(@PathVariable @Valid UUID userId,
+                                                    @PathVariable @Valid UUID walletId,
+                                                    @RequestBody WalletDto walletDto) {
+        return ResponseEntity.ok(this.walletService.rename(userId, walletId, walletDto));
+    }
 }
