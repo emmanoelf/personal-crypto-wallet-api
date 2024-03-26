@@ -23,13 +23,22 @@ public class WalletControllerImpl implements WalletController {
 
     @Override
     @PostMapping("/{userId}")
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<WalletResponseDto> save(@PathVariable @Valid UUID userId, @Valid @RequestBody WalletDto walletDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.walletService.save(userId, walletDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.walletService.save(userId, walletDto));
     }
 
     @Override
     @GetMapping(value = "/{userId}")
     public ResponseEntity<WalletResponseDto> show(@PathVariable @Valid UUID userId, @RequestParam(value = "name") String name){
         return ResponseEntity.ok(this.walletService.find(userId, name));
+    }
+
+    @Override
+    @DeleteMapping("/{userId}/{walletId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> delete(@PathVariable @Valid UUID userId, @PathVariable @Valid UUID walletId) {
+        this.walletService.delete(userId, walletId);
+        return ResponseEntity.noContent().build();
     }
 }

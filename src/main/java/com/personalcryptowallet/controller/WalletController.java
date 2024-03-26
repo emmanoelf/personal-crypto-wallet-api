@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface WalletController {
     ResponseEntity<WalletResponseDto> save(UUID userId, WalletDto walletDto);
     ResponseEntity<WalletResponseDto> show(UUID userId, String name);
+    ResponseEntity<Void> delete(UUID userId, UUID walletId);
 }
