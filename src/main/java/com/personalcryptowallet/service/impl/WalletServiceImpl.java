@@ -60,7 +60,17 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public WalletResponseDto rename(UUID userId, UUID walletId, String nameWallet) {
-        return null;
+    public WalletResponseDto rename(UUID userId, UUID walletId, WalletDto walletDto) {
+        Optional<Wallet> wallet = this.walletRepository.findByIdAndUserId(walletId, userId);
+
+        if(wallet.isEmpty()){
+            throw new EntidadeNaoEncontradaException("Carteira não encontrada");
+        }
+
+        wallet.get().setName(walletDto.name());
+
+        this.walletRepository.save(wallet.get());
+
+        return WalletMapper.toDto(wallet.get());
     }
 }

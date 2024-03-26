@@ -9,5 +9,5 @@ public interface WalletService {
     WalletResponseDto save(UUID userId, WalletDto walletDto);
     WalletResponseDto find(UUID userId, String nameWallet);
     void delete(UUID userId, UUID walletId);
-    WalletResponseDto rename(UUID userId, UUID walletId, String nameWallet);
+    WalletResponseDto rename(UUID userId, UUID walletId, WalletDto walletDto);
 }
