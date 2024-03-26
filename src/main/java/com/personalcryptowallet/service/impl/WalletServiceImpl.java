@@ -39,9 +39,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public WalletResponseDto find(UUID userId, String nameWallet) {
-        this.userRepository.findById(userId)
-                .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado"));
-        Optional<Wallet> wallet = this.walletRepository.findByName(nameWallet);
+        Optional<Wallet> wallet = this.walletRepository.findByNameAndUserId(nameWallet, userId);
 
         if (wallet.isEmpty()) {
             throw new EntidadeNaoEncontradaException("Carteira não encontrada");
