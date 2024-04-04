@@ -49,14 +49,9 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public void delete(UUID userId, UUID walletId) {
-        Optional<Wallet> wallet = this.walletRepository.findByIdAndUserId(walletId, userId);
-
-        if(wallet.isEmpty()){
-            throw new EntidadeNaoEncontradaException("Carteira não encontrada");
-        }
-
-        this.walletRepository.delete(wallet.get());
+    @Transactional
+    public Long delete(UUID userId, UUID walletId) {
+        return this.walletRepository.deleteWalletByIdAndUserId(walletId, userId);
     }
 
     @Override

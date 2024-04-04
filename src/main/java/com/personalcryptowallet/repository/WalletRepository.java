@@ -11,4 +11,5 @@ import java.util.UUID;
 public interface WalletRepository extends JpaRepository<Wallet, UUID> {
     Optional<Wallet> findByNameAndUserId(String name, UUID userId);
     Optional<Wallet> findByIdAndUserId(UUID walletId, UUID userId);
+    Long deleteWalletByIdAndUserId(UUID walletId, UUID userId);
 }

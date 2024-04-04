@@ -36,10 +36,9 @@ public class WalletControllerImpl implements WalletController {
 
     @Override
     @DeleteMapping("/{userId}/{walletId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> delete(@PathVariable @Valid UUID userId, @PathVariable @Valid UUID walletId) {
-        this.walletService.delete(userId, walletId);
-        return ResponseEntity.noContent().build();
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Long> delete(@PathVariable @Valid UUID userId, @PathVariable @Valid UUID walletId) {
+        return ResponseEntity.ok(this.walletService.delete(userId, walletId));
     }
 
     @Override
