@@ -25,10 +25,10 @@ public class Coin {
     private UUID id;
 
     @Column(nullable = false)
-    private String name;
+    private String slug;
 
     @Column(nullable = false)
-    private String slug;
+    private String symbol;
 
     @Column(nullable = false)
     private BigDecimal price;
