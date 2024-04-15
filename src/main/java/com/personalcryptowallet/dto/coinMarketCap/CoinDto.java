@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CoinDto {
+    private Long id;
     private String symbol;
     private String slug;
     private QuoteDto quote;

@@ -25,6 +25,9 @@ public class Coin {
     private UUID id;
 
     @Column(nullable = false)
+    private Long idCoinMarketCap;
+
+    @Column(nullable = false)
     private String slug;
 
     @Column(nullable = false)
@@ -40,6 +43,6 @@ public class Coin {
     private LocalDateTime dateContribution;
 
     @Column(nullable = false)
-    private BigDecimal broker_fee;
+    private BigDecimal brokerFee;
 
 }
