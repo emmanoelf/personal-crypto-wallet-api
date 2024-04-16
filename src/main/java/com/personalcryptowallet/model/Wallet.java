@@ -47,6 +47,15 @@ public class Wallet {
             inverseJoinColumns = @JoinColumn(name = "coin_id"))
     private Set<Coin> coins = new HashSet<>();
 
+    public Wallet(UUID id, String name, BigDecimal balance, BigDecimal totalContribuition, BigDecimal profitAndLose, User user) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+        this.totalContribuition = totalContribuition;
+        this.profitAndLose = profitAndLose;
+        this.user = user;
+    }
+
     @PrePersist
     private void defaultZero(){
         if(this.balance == null){

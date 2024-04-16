@@ -13,7 +13,7 @@ import com.personalcryptowallet.service.CoinWalletService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.Collections;
 import java.util.UUID;
 
 @Service
@@ -33,8 +33,8 @@ public class CoinWalletServiceImpl implements CoinWalletService {
     public CoinResponseDto addCoin(UUID walletId, CoinDto coinDto) {
         Coin coin = CoinMapper.toModel(coinDto);
 
-        Optional<Wallet> wallet = this.walletRepository.findById(walletId);
-        wallet.get().getCoins().add(coin);
+        Wallet wallet = this.walletRepository.findWithoutCoin(walletId);
+        coin.setWallet(Collections.singleton(wallet));
 
         Coin savedCoin = this.coinRepository.save(coin);
 
