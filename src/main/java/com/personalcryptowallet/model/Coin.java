@@ -10,6 +10,8 @@ import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -44,5 +46,11 @@ public class Coin {
 
     @Column(nullable = false)
     private BigDecimal brokerFee;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "wallet_coin",
+            joinColumns = @JoinColumn(name = "coin_id"),
+            inverseJoinColumns = @JoinColumn(name = "wallet_id"))
+    private Set<Wallet> wallet = new HashSet<>();
 
 }
