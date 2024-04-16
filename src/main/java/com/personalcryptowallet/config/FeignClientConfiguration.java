@@ -1,15 +1,18 @@
 package com.personalcryptowallet.config;
 
 import feign.RequestInterceptor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FeignClientConfiguration {
+    @Value("${api.key.coin-market-cap}")
+    private String apiKeyCoinMarketCap;
     @Bean
     public RequestInterceptor requestInterceptor(){
         return requestTemplate -> {
-            requestTemplate.header("X-CMC_PRO_API_KEY", "7ed90a6d-683f-45a8-8f40-beed275cb11a");
+            requestTemplate.header("X-CMC_PRO_API_KEY", apiKeyCoinMarketCap);
         };
     }
 }
