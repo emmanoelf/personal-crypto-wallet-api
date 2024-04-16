@@ -7,12 +7,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public record CoinDto(
-        @NotNull @NotBlank Long idCoinMarketCap,
+        @NotNull Long idCoinMarketCap,
         @NotNull @NotBlank String slug,
         @NotNull @NotBlank String symbol,
-        @NotNull @NotBlank BigDecimal price,
-        @NotNull @NotBlank  BigDecimal quantity,
-        @NotNull @NotBlank LocalDateTime dateContribuition,
+        @NotNull BigDecimal price,
+        @NotNull BigDecimal quantity,
+        @NotNull LocalDateTime dateContribuition,
         BigDecimal brokerFee
 ) {
 }

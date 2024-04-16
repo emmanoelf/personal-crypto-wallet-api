@@ -5,6 +5,7 @@ import com.personalcryptowallet.dto.CoinDto;
 import com.personalcryptowallet.dto.CoinResponseDto;
 import com.personalcryptowallet.dto.coinMarketCap.CoinMarketCapResponseDto;
 import com.personalcryptowallet.service.CoinWalletService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class CoinWalletControllerImpl implements CoinWalletController {
 
     @Override
     @PostMapping(path = "/coin", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CoinResponseDto> addCoin(@PathVariable UUID walletId, @RequestBody CoinDto coinDto) {
+    public ResponseEntity<CoinResponseDto> addCoin(@PathVariable UUID walletId, @RequestBody @Valid CoinDto coinDto) {
         return ResponseEntity.status(HttpStatus.OK).body(this.coinWalletService.addCoin(walletId, coinDto));
     }
 }
