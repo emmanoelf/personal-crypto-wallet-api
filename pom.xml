@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
+		<flyway.version>10.11.0</flyway.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,6 +57,15 @@
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>${flyway.version}</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
