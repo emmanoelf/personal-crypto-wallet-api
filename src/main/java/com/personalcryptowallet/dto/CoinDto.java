@@ -11,8 +11,9 @@ public record CoinDto(
         @NotNull @NotBlank String slug,
         @NotNull @NotBlank String symbol,
         @NotNull BigDecimal price,
+        @NotNull BigDecimal contributionValue,
         @NotNull BigDecimal quantity,
-        @NotNull LocalDateTime dateContribuition,
+        @NotNull LocalDateTime dateContribution,
         BigDecimal brokerFee
 ) {
 }

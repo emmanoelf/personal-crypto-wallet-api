@@ -10,7 +10,8 @@ public record CoinResponseDto(
         String symbol,
         BigDecimal price,
         BigDecimal quantity,
-        LocalDateTime dateContribuition,
+        BigDecimal contributionValue,
+        LocalDateTime dateContribution,
         BigDecimal brokerFee
 ) {
 }

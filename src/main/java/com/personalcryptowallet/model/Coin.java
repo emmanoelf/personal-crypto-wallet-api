@@ -39,6 +39,9 @@ public class Coin {
     private BigDecimal price;
 
     @Column(nullable = false)
+    private BigDecimal contributionValue;
+
+    @Column(nullable = false)
     private BigDecimal quantity;
 
     @Column(nullable = false)

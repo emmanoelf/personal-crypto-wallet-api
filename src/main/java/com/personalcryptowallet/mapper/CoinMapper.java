@@ -11,8 +11,9 @@ public class CoinMapper {
                 .slug(coinDto.slug())
                 .symbol(coinDto.symbol())
                 .price(coinDto.price())
+                .contributionValue(coinDto.contributionValue())
                 .quantity(coinDto.quantity())
-                .dateContribution(coinDto.dateContribuition())
+                .dateContribution(coinDto.dateContribution())
                 .brokerFee(coinDto.brokerFee())
                 .build();
     }
@@ -23,6 +24,7 @@ public class CoinMapper {
                 coin.getSlug(),
                 coin.getSymbol(),
                 coin.getPrice(),
+                coin.getContributionValue(),
                 coin.getQuantity(),
                 coin.getDateContribution(),
                 coin.getBrokerFee());
