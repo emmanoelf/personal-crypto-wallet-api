@@ -1,0 +1,1 @@
+ALTER TABLE coin ADD COLUMN contribution_value DECIMAL(10,2) NOT NULL;
