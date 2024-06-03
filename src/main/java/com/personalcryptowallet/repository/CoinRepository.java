@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface CoinRepository extends JpaRepository<Coin, UUID> {
+public interface CoinRepository extends JpaRepository<Coin, UUID>, CoinCustomRepository {
 }
