@@ -8,7 +8,7 @@ delete from wallet_coin;
 set foreign_key_checks = 1;
 
 insert into coin (id, id_coin_market_cap, slug, symbol, price, contribution_value, quantity, date_contribution)
-values('bad71db7-0028-49af-951c-a5695cf44df8', 1, 'bitcoin', 'BTC', 25391.49, 100.00, 0.00122211, '2022-06-22T10:15:30');
+values('bad71db7-0028-49af-951c-a5695cf44df8', 1, 'bitcoin', 'BTC', 25391.49, 100.00, 0.00393832, '2022-06-22T10:15:30');
 
 insert into coin (id, id_coin_market_cap, slug, symbol, price, contribution_value, quantity, date_contribution)
 values('9a397bf5-4ec0-465b-8f28-853802ee4aee', 1027, 'ethereum', 'ETH', 1500.00, 600.00, 0.4, '2022-06-22T10:15:30');
