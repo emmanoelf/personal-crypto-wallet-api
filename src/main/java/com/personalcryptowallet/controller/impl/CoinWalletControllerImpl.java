@@ -3,6 +3,7 @@ package com.personalcryptowallet.controller.impl;
 import com.personalcryptowallet.controller.CoinWalletController;
 import com.personalcryptowallet.dto.CoinDto;
 import com.personalcryptowallet.dto.CoinResponseDto;
+import com.personalcryptowallet.dto.PortfolioSummaryDto;
 import com.personalcryptowallet.dto.coinMarketCap.CoinMarketCapResponseDto;
 import com.personalcryptowallet.service.CoinWalletService;
 import jakarta.validation.Valid;
@@ -33,5 +34,11 @@ public class CoinWalletControllerImpl implements CoinWalletController {
     @PostMapping(path = "/coin", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CoinResponseDto> addCoin(@PathVariable UUID walletId, @RequestBody @Valid CoinDto coinDto) {
         return ResponseEntity.status(HttpStatus.OK).body(this.coinWalletService.addCoin(walletId, coinDto));
+    }
+
+    @Override
+    @GetMapping(path = "/summary", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PortfolioSummaryDto> showSummary(@PathVariable UUID walletId) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.coinWalletService.showSummary(walletId));
     }
 }

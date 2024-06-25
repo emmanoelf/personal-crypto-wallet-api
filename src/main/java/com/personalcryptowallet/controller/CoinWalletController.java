@@ -2,6 +2,7 @@ package com.personalcryptowallet.controller;
 
 import com.personalcryptowallet.dto.CoinDto;
 import com.personalcryptowallet.dto.CoinResponseDto;
+import com.personalcryptowallet.dto.PortfolioSummaryDto;
 import com.personalcryptowallet.dto.coinMarketCap.CoinMarketCapResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,4 +30,12 @@ public interface CoinWalletController {
             content = {@Content(mediaType = "application/json")})
     })
     ResponseEntity<CoinResponseDto> addCoin(UUID walletId, CoinDto coinDto);
+
+    @Operation(description = "Show summary of your profit or loss")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+            description = "Check in real-time the current value of all yours cryptocurrencies",
+            content = {@Content(mediaType = "application/json")})
+    })
+    ResponseEntity<PortfolioSummaryDto> showSummary(UUID walletId);
 }
